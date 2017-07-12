@@ -3,16 +3,20 @@ $(document).ready(function() {
     var deckOfCards = "https://deckofcardsapi.com/api/deck/new/draw/?count=4";
     var callback = function(data) {
         var cardsHTML = '<ul class="cardList">';
+
         // cardsHTML += '<li>';
         // cardsHTML += data.cards.length;
         // cardsHTML += '</li>';
         $.each(data.cards, function(i, photo) {
+            var cardCaption = '' + photo.value + '&nbsp; of &nbsp;' + photo.suit + '';
             cardsHTML += '<li class="card">';
-            cardsHTML += '<img src="' + photo.image + '"></a>';
+            cardsHTML += '<a data-lightbox="cards" data-title="' + cardCaption + '" img href="' + photo.image + '"><img src="' + photo.image + '"></a>';
+            // ' + photo.value + ' of ' + photo.suit + '  gets card name and suit
             cardsHTML += '</li>';
+
         });
         cardsHTML += '</ul>';
-        $('#luckyCards1').append(cardsHTML).delay(90000);
+        $('#luckyCards1').append(cardsHTML);
     };
 
     var trueRandom = "https://qrng.anu.edu.au/API/jsonI.php?length=4&type=hex16&size=3";
@@ -24,9 +28,16 @@ $(document).ready(function() {
         $.each(numberData.data, function(i, number) {
             numberHTML += '<li style="color:#' + number + '" class="number">';
             numberHTML += number;
+            // numberHTML += '<a id="' + number + '" data-lightbox="numbers" href="images/cardman.png"> ' + number + '</a>';
             numberHTML += '</li>';
+            // numberHTML += '<div id="' + number + '" style="display:none" class="luckyColor" style="background-color:#' + number + '"> ' + number + ' </div>';
+            // $(".lb-nav").addClass('' + number + '');
+            // $("." + number + "").on("click", function() {
+            //     $(this).css("background-color", "#" + number + "");
+            // });
         });
         numberHTML += '</ul>';
+
         $('#luckyNumbers1').append(numberHTML);
         console.log('Random Number:' + numberData.data);
     };
@@ -38,11 +49,13 @@ $(document).ready(function() {
         // cardsHTML += data.cards.length;
         // cardsHTML += '</li>';
         $.each(data.cards, function(i, photo) {
+            var cardCaption = '' + photo.value + '&nbsp; of &nbsp;' + photo.suit + '';
             cardsHTML2 += '<li class="card">';
-            cardsHTML2 += '<img src="' + photo.image + '"></a>';
+            cardsHTML2 += '<a data-lightbox="cards" data-title="' + cardCaption + '" img href="' + photo.image + '"><img src="' + photo.image + '"></a>';
             cardsHTML2 += '</li>';
         });
         cardsHTML2 += '</ul>';
+
         $('#luckyCards2').append(cardsHTML2);
     };
 
