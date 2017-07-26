@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-    var deckOfCards = "https://deckofcardsapi.com/api/deck/new/draw/?count=4";
+    var deckOfCards = "https://deckofcardsapi.com/api/deck/new/draw/?count=8";
     $('#progress2').show();
     var callback = function(data) {
         var cardsHTML = '<ul class="list cardList" id="ulCardList1">';
@@ -66,7 +66,7 @@ $(document).ready(function() {
 
 
 
-    var deckOfCards2 = "https://deckofcardsapi.com/api/deck/new/draw/?count=4";
+    var deckOfCards2 = "https://deckofcardsapi.com/api/deck/new/draw/?count=8";
     $('#progress3').show();
     var callback2 = function(data) {
         var cardsHTML2 = '<ul class="list cardList" id="ulCardList2">';
